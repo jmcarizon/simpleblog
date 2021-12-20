@@ -1,0 +1,100 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: $default-font-size;
+    color: $black;
+    font-weight: $montserrat-regular;
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+// title
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 $sm;
+    padding: 0;
+    line-height: 1.5em;
+    font-weight: $montserrat-bold;
+}
+
+p {
+    margin: 0 0 $sm;
+    padding: 0;
+    line-height: 1.5em;
+    letter-spacing: -0.01px;
+}
+
+a {
+    text-decoration: none;
+    color: $link;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.jp-font {
+    font-family: 'YuGothic';
+}
+
+[class^="title"] {
+    &[class*="-1"] {
+        font-size: 3rem;
+    }
+    &[class*="-2"] {
+        font-size: 2.5rem;
+    }
+    &[class*="-3"] {
+        font-size: 2rem;
+    }
+    &[class*="-4"] {
+        font-size: 1.5rem;
+    }
+    &[class*="-5"] {
+        font-size: 1.25rem;
+    }
+    &[class*="-6"] {
+        font-size: 1rem;
+    }
+    &[class*="-def-font"] {
+        font-size: 31px;
+    }
+}
+
+$alignment: (
+    center: center,
+    left: left,
+    right: right,
+);
+
+@each $name, $var in $alignment {
+    .txt-#{$name} {
+        text-align: $var;
+    }
+}
+
+$fontWeight: (
+    light: 100,
+    regular: 200,
+    bold: 500,
+    extrabold: 600,
+);
+
+@each $name, $var in $fontWeight {
+    .is-#{$name} {
+        font-weight: $var !important;
+    }
+}
