@@ -1,6 +1,6 @@
 <template>
-    <div class="_login">
-        <Login />
+    <div class="_register">
+        <Register />
         <main class="_main">
             <News />
         </main>
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import Login   from '~/components/Login.vue'
-import News    from '~/components/News.vue'
+import Register  from '~/components/Register.vue'
+import News      from '~/components/News.vue'
 
 export default {
     components: {
-        Login,
+        Register,
         News,
     }
 }

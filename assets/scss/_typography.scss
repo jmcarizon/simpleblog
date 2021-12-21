@@ -6,6 +6,7 @@ body {
 
     * {
         box-sizing: border-box;
+        letter-spacing: .1rem;
     }
 }
 
@@ -26,7 +27,6 @@ p {
     margin: 0 0 $sm;
     padding: 0;
     line-height: 1.5em;
-    letter-spacing: -0.01px;
 }
 
 a {
@@ -87,10 +87,11 @@ $alignment: (
 }
 
 $fontWeight: (
-    light: 100,
-    regular: 200,
-    bold: 500,
-    extrabold: 600,
+    light: $montserrat-light,
+    regular: $montserrat-regular,
+    medium: $montserrat-medium,
+    bold: $montserrat-bold,
+    extrabold: $montserrat-extrabold,
 );
 
 @each $name, $var in $fontWeight {

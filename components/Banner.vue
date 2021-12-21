@@ -6,10 +6,10 @@
                     <template v-for="(post, index) in items">
                             <div :class="['_row-center items_container', {active: divActive == index}]"  :key="index">
                                 <figure class="_col _item">
-                                    <img :src="post.img" :alt="post.content">
+                                    <img :src="post.img" :alt="post.title">
                                     <div class="_wrapper">
                                         <div class="txt-right _banner-content">
-                                            <p class="jp-font text_content" v-html="post.content"></p>
+                                            <p class="jp-font text_content" v-html="post.title"></p>
                                             <span class="is-block date">{{ post.date }}</span>
                                         </div>
                                     </div>
@@ -33,34 +33,33 @@
     </div>
 </template>
 
+<style lang="scss">
+    @import '~/assets/scss/banner.scss';
+</style>
+
 <script>
+let active;
 export default {
     data() {
         return {
             items: [
                 {
-                    content: `<span>サンプルテキスト</span> <br/><span>サンプル ルテキスト</span> <br/><span>サンプルテキスト</span>`,
-                    // content: `商品一覧 ご利用ガイド マイページ`,
-                    img: require('../assets/images/banner/banner1.png'),
-                    date: '2019.06.19'
+                    title : `<span>サンプルテキスト</span> <br/><span>サンプル ルテキスト</span> <br/><span>サンプルテキスト</span>`,
+                    img   : require('../assets/images/banner/banner1.png'),
+                    date  : '2019.06.19'
                 },
                 {  
-                    content: `<span>サンプルテキスト</span> <br/><span>サンプル ルテキスト</span> <br/><span>サンプルテキスト</span>`,
-                    // content: `商品一覧 ご利用ガイド マイページ`,
-                    img: require('../assets/images/banner/banner1.png'),
-                    date: '2019.06.19'
+                    title : `<span>サンプルテキスト</span> <br/><span>サンプル ルテキスト</span> <br/><span>サンプルテキスト</span>`,
+                    img   : require('../assets/images/banner/banner1.png'),
+                    date  : '2019.06.19'
                 },
                 {  
-                    content: `<span>サンプルテキスト</span> <br/><span>サンプル ルテキスト</span> <br/><span>サンプルテキスト</span>`,
-                    // content: `商品一覧 ご利用ガイド マイページ`,
-                    img: require('../assets/images/banner/banner1.png'),
-                    date: '2019.06.19'
+                    title : `<span>サンプルテキスト</span> <br/><span>サンプル ルテキスト</span> <br/><span>サンプルテキスト</span>`,
+                    img   : require('../assets/images/banner/banner1.png'),
+                    date  : '2019.06.19'
                 }
             ],
-            lists: 'bc',
-            itemsPerRow: 1,
             divActive: 0,
-            increment: 0,
             direction: null,
 			disable: false,
         }
@@ -68,28 +67,18 @@ export default {
     methods: {
         move(i) {
             this.direction = i
-
-            if(i == 'next') {
-                this.divActive = this.divActive+1
-            } else if(i == 'prev') {
-                this.divActive = this.divActive-1
-            }
+            i == 'next' ? this.divActive = this.divActive+1 : this.divActive = this.divActive-1
         },
 		moveCarouselDot(index) {
-			this.divActive = index
-            this.disable = true
-            let active = this.divActive
-            console.log(active)
-
-            if(active > index) {
-                console.log(true)
-            } else {
-                console.log(false)
-            }
+            active = this.divActive
 
 			setTimeout(() => {
-				this.disable = false
-			}, 1000)
+			    this.divActive = index
+
+                active < index ? this.direction = 'next' : this.direction = 'prev'
+
+                active = this.divActive;
+			}, 100)
 		}
     },
 }
